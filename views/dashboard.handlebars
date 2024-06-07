@@ -1,0 +1,28 @@
+<h1>Dashboard</h1>
+{{#if success_msg}}
+<div>{{success_msg}}</div>
+{{/if}}
+<form action="/finance/addTransaction" method="POST">
+  <div>
+    <label for="amount">Amount</label>
+    <input type="number" name="amount" required>
+  </div>
+  <div>
+    <label for="category">Category</label>
+    <input type="text" name="category" required>
+  </div>
+  <div>
+    <label for="type">Type</label>
+    <select name="type" required>
+      <option value="income">Income</option>
+      <option value="expense">Expense</option>
+    </select>
+  </div>
+  <button type="submit">Add Transaction</button>
+</form>
+<h2>Your Transactions</h2>
+<ul>
+  {{#each transactions}}
+  <li>{{type}}: {{category}} - ${{amount}}</li>
+  {{/each}}
+</ul>
