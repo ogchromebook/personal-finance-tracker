@@ -1,28 +1,19 @@
 <h1>Dashboard</h1>
-{{#if success_msg}}
-<div>{{success_msg}}</div>
-{{/if}}
-<form action="/finance/addTransaction" method="POST">
-  <div>
-    <label for="amount">Amount</label>
-    <input type="number" name="amount" required>
-  </div>
-  <div>
-    <label for="category">Category</label>
-    <input type="text" name="category" required>
-  </div>
-  <div>
-    <label for="type">Type</label>
-    <select name="type" required>
-      <option value="income">Income</option>
-      <option value="expense">Expense</option>
-    </select>
-  </div>
-  <button type="submit">Add Transaction</button>
+<a href="/logout">Logout</a>
+<h2>Add Transaction</h2>
+<form action="/transactions" method="POST">
+  <input type="number" name="amount" placeholder="Amount" required>
+  <input type="text" name="description" placeholder="Description" required>
+  <select name="type" required>
+    <option value="income">Income</option>
+    <option value="expense">Expense</option>
+  </select>
+  <button type="submit">Add</button>
 </form>
-<h2>Your Transactions</h2>
+
+<h2>Transactions</h2>
 <ul>
   {{#each transactions}}
-  <li>{{type}}: {{category}} - ${{amount}}</li>
+    <li>{{this.description}} - ${{this.amount}} ({{this.type}})</li>
   {{/each}}
 </ul>

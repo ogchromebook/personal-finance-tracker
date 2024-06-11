@@ -1,19 +1,6 @@
 <h1>Register</h1>
-{{#if errors}}
-<ul>
-  {{#each errors}}
-  <li>{{msg}}</li>
-  {{/each}}
-</ul>
-{{/if}}
-<form action="/users/register" method="POST">
-  <div>
-    <label for="username">Username</label>
-    <input type="text" name="username" required>
-  </div>
-  <div>
-    <label for="password">Password</label>
-    <input type="password" name="password" required>
-  </div>
+<form action="/register" method="POST">
+  <input type="text" name="username" placeholder="Username" required>
+  <input type="password" name="password" placeholder="Password" required>
   <button type="submit">Register</button>
 </form>

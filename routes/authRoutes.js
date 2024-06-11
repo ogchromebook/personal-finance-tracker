@@ -1,23 +1,12 @@
-const express = require('express');
 const router = express.Router();
-const { registerUser, loginUser, logoutUser } = require('..');
-const { ensureAuthenticated } = require('..');
-const { register } = require('module');
+const authController = require('../controllers/authController');
 
-// route displays the login page
-router.get('/login', (req, res) => res.render('login'));
-
-// route displays the registration page
 router.get('/register', (req, res) => res.render('register'));
+router.post('/register', authController.register);
 
-// route to handle user registration
-router.post('/register', registerUser);
+router.get('/login', (req, res) => res.render('login'));
+router.post('/login', authController.login);
 
-// route to handle user login
-router.post('/login', loginUser);
+router.get('/logout', authController.logout);
 
-// route to handle user logout
-router.get('/logout', logoutUser);
-
-//export the router so it can be accessed across the application
 module.exports = router;

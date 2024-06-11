@@ -1,16 +1,12 @@
-const sequelize = require('');
-const User = require('./User');
-const Transaction = require('./Transaction');
+const sequelize = require('../config/config');
+const User = require('./user');
+const Transaction = require('./transaction');
 
-// Define associations 
-// User can have mamy transanctions
-User.hasMany(Transaction, { onDelete: 'CASCADE'});
-Transaction.belongsTo(User);
+User.hasMany(Transaction, { foreignKey: 'user_id' });
+Transaction.belongsTo(User, { foreignKey: 'user_id' });
 
-//Sync all models with the db
-sequelize.sync()
-    .then(() => console.log('Database synced'))
-    .catch(err=> console.log('Error syncing database', err));
+sequelize.sync({ force: false }).then(() => {
+  console.log('Database & tables created!');
+});
 
-//Exports the models
 module.exports = { User, Transaction };
