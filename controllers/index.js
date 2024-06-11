@@ -1,9 +1,9 @@
 const router = require('express').Router();
 
-const authController = require('./authController');
-const financeController = require('./financeController');
+const apiRoutes = require('./api');
+const homeRoutes = require('./homeRoutes');
 
-router.use('/auth',authController);
-router.use('/finance', financeController)
+router.use('/', homeRoutes);
+router.use('/api', apiRoutes);
 
 module.exports = router;

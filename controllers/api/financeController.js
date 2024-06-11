@@ -1,5 +1,5 @@
 const express = require('express');
-const { Transaction } = require('../models/Transaction');
+const { Transaction } = require('../../models');
 const router = express.Router();
 
 exports.getTransactions = async (req, res) => {
