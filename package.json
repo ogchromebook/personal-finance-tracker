@@ -17,6 +17,8 @@
     "express-handlebars": "^7.1.2",
     "express-session": "^1.18.0",
     "express-validator": "^7.1.0",
+    "node": "^20.14.0",
+    "node.js": "^0.0.1-security",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
     "pg": "^8.12.0",
