@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
 const express = require('express');
-const { User } = require('../models/index');
+const { User } = require('../../models/index');
 const { Sequelize } = require('sequelize');
 const router = express.Router();
 
