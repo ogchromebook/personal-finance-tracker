@@ -42,25 +42,17 @@ router.get('/', async (req, res) => {
   });
 
   router.get('/register', async (req,res) => {
-    try {
-      const userData = await User.findByPk(req.session.user_id, {
-        attributes: {exclude: ['password'] },
-        include: [{ model: Transaction }],
-      });
-      
-      const user = userData.get({plain: true});
-      res.render('register', {
-        ...user,
-        logged_in: true
-      });
-    } catch (err) {
-      res.status(500).json(err);
+    if (req.session.logged_in) {
+      res.redirect('/dashboard');
+      return;
     }
+    
+    res.render('register');
   });
 
   router.get('/login', async (req,res) => {
     if (req.session.logged_in) {
-      res.redirect('/register');
+      res.redirect('/dashboard');
       return;
     }
   
