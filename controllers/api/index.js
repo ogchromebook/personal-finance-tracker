@@ -1,9 +1,9 @@
 const router = require('express').Router();
 
-const authController = require('./authController');
-const financeController = require('./financeController');
+const authRoutes = require('./authRoutes');
+const financeRoutes = require('./financeRoutes');
 
-router.use('/auth',authController);
-router.use('/finance', financeController)
+router.use('/auth',authRoutes);
+router.use('/finance', financeRoutes)
 
 module.exports = router;
